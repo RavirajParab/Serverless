@@ -1,14 +1,17 @@
 {
-  "name": "netlify-functions-example",
+  "name": "netlify-functions",
   "version": "0.1.0",
-  "description": "Irene’s playground for learning how to use Netlify Lambda Functions",
+  "description": "Raviraj's playground for learning how to use Netlify Lambda Functions",
   "private": true,
   "scripts": {
+    "start":"concurrently 'npm:startclient' 'npm:startserver'",
+    "startclient": "webpack-dev-server --mode development --hot --config webpack.client.js",
+    "startserver": "netlify-lambda serve src/lambda -c webpack.server.js",
     "build": "npm run buildclient && npm run buildserver",
     "buildclient": "webpack --mode production --config webpack.client.js",
     "buildserver": "netlify-lambda build src/lambda"
   },
-  "author": "imorente",
+  "author": "Raviraj Parab",
   "license": "MIT",
   "devDependencies": {
     "babel-loader": "^7.1.4",
